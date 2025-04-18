@@ -1,3 +1,4 @@
 # Ignore the .git directory (Git's own files)
 
 .git/
+.git/
