@@ -14,21 +14,22 @@ pwd; hostname; date
 source ./config.sh
 names=($(cat ${LIST}))
 
+# set genomad db directory to be downloaded by apptainer run
 DB_DIR="./genomad_db"
-
+# array for sample_ids 
 SAMPLE_ID=${names[${SLURM_ARRAY_TASK_ID}]}
-
+# set i/o
 INPUT="${OUTDIR}/${SAMPLE_ID}/final.contigs.fa.gz"
 OUTPUT="./genomad_output/${SAMPLE_ID}"
-
+# make output dir if it doesn't exist
 if [[ ! -d "${OUTPUT}" ]]; then
   echo "${OUTPUT} does not exist. Directory created"
   mkdir -p ${OUTPUT}
 fi
 
-
+# set bind for apptainer/docker image
 BIND="--bind $(pwd):/app"
-
+# Step 1: Download database
 echo "Running Genomad: download-database"
 
 apptainer run ${BIND} "${GENOMAD}" download-database .
