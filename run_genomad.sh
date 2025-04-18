@@ -4,7 +4,7 @@
 #SBATCH --account=msbarker
 #SBATCH --partition=standard
 #SBATCH --nodes=1
-#SBATCH --ntasks=1
+#SBATCH --ntasks=2
 #SBATCH --time=24:00:00
 #SBATCH --cpus-per-task=16
 #SBATCH --mem-per-cpu=6gb
