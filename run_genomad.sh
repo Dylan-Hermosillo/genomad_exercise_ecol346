@@ -39,8 +39,7 @@ apptainer run ${BIND} "${GENOMAD}" download-database .
 echo "Running Genomad: end-to-end"
 
 apptainer run ${BIND} "${GENOMAD}" end-to-end \
- --min-length 5000 \
+ --min-score 0.7 \
  --skip-provirus-detection \
  --skip-taxonomic-assignment \
- --threads 16 \
  "${INPUT}" "${OUTPUT}" genomad_db
