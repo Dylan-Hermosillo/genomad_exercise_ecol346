@@ -1,4 +1,5 @@
 #!/bin/bash
+#SBATCH --output=./logs/run_genomad_db-%a.out
 #SBATCH --account=msbarker
 #SBATCH --partition=standard
 #SBATCH --nodes=1
