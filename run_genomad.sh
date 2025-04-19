@@ -5,7 +5,7 @@
 #SBATCH --partition=standard
 #SBATCH --nodes=1
 #SBATCH --ntasks=2
-#SBATCH --time=48:00:00
+#SBATCH --time=12:00:00
 #SBATCH --cpus-per-task=16
 #SBATCH --mem-per-cpu=6gb
 #SBATCH --array=0-1
@@ -38,4 +38,9 @@ apptainer run ${BIND} "${GENOMAD}" download-database .
 
 echo "Running Genomad: end-to-end"
 
-apptainer run ${BIND} "${GENOMAD}" end-to-end "${INPUT}" "${OUTPUT}" genomad_db
+apptainer run ${BIND} "${GENOMAD}" end-to-end \
+ --min-length 5000 \
+ --skip-provirus-detection \
+ --skip-taxonomic-assignment \
+ --threads 16 \
+ "${INPUT}" "${OUTPUT}" genomad_db
